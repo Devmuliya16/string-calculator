@@ -1,7 +1,12 @@
+import Home from "./pages/home"
+import { utilProvider } from "./context/utilContext"
+
 function App() {
   return (
     <>
-      hello
+      <utilProvider>
+        <Home />
+      </utilProvider>
     </>
   )
 }
