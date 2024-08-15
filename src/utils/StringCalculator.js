@@ -1,6 +1,7 @@
 class StringCalculator {
-    add(){
-        
+    add(numbers){
+        if(!numbers)
+            return 0;
     }
 }
 
