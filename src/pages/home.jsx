@@ -7,12 +7,12 @@ const home = () => {
 
   return (
     <>
-      <section className="flex items-center flex-col justify-between border-2 h-screen p-4">
+      <section className="flex items-center flex-col justify-between h-screen p-4">
         <Navbar/>
         <TextArea/>
         <div></div>
       </section>
-      <section className="flex items-center flex-col border-2 h-screen p-4">
+      <section className="flex items-center flex-col justify-between h-screen">
         <MySection/>
         <Footer/>
       </section>

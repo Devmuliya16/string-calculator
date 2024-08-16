@@ -15,10 +15,11 @@ const UtilProvider = ({ children }) => {
     const computeValues = () => {
         try {
             const calculator = new StringCalculator();
-            setOutputValue(calculator.add(inputValue));
-            console.log(outPutValue)
+            // setOutputValue(calculator.add(inputValue));
+            setInputValue(calculator.add(inputValue));
         } catch (e) {
             setPopUpMessage({ message: e.message, isError: true });
+            setInputValue(popUpMessage.message)
         }
     };
 

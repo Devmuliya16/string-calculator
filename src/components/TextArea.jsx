@@ -7,6 +7,9 @@ function TextArea() {
   const handleInput = (e) => {
     setInputValue(e.target.value);
   }
+  const clearInput = () =>{
+    setInputValue("");
+  }
   return (
     <>
       <section className='flex flex-col items-center'>
@@ -20,7 +23,7 @@ function TextArea() {
           </p>
         </div>
         <div className='flex flex-row items-center justify-center w-full space-x-5'>
-          <Button text={"Clear"} style="secondary" handler={() => clearValues()} />
+          <Button text={"Clear"} style="secondary" handler={clearInput} />
           <Button text={"Compute !"} style="primary" handler={() => computeValues()} />
         </div>
       </section>

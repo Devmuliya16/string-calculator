@@ -10,7 +10,7 @@ function Button(props) {
   return (
     <button 
     className={`py-3 px-4  border-2 rounded-lg ${style[props.style]}`}
-    onClick={props.hendler}>{props.text}</button>
+    onClick={props.handler}>{props.text}</button>
   )
 }
 

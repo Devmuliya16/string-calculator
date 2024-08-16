@@ -10,6 +10,7 @@ export default {
         'brand': {
           gray: '#0d3253',
           light: '#f2f4f7',
+          dark:'#101319',
           alert: '#076dee',
           blue: '#58c8d0'
         }
