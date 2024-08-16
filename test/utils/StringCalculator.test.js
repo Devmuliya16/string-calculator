@@ -60,19 +60,30 @@ describe("String Calculator test suit", ()=>{
     })
 
     describe('Negative numbers tests', () => { 
-        it('should throw an error for single negative number', ()=>{
-            expect(()=> calculator.add('-1').to.throw('Negative numbers not allowed: -1'));
-            expect(()=> calculator.add('-4').to.throw('Negative numbers not allowed: -4'));
-        })
+        it('should throw an error for a single negative number', () => {
+            expect(() => calculator.add('-1')).to.throw('Negative numbers not allowed: -1');
+            expect(() => calculator.add('-4')).to.throw('Negative numbers not allowed: -4');
+        });
 
-        it('should throw an error for negative numbers', () => {
+        it('should throw an error for multiple negative numbers', () => {
             expect(() => calculator.add('1,-2,3')).to.throw('Negative numbers not allowed: -2');
             expect(() => calculator.add('1,-2,-3')).to.throw('Negative numbers not allowed: -2, -3');
         });
 
-        it('should throw an error for negative numbers with custom delimitors', ()=>{
+        it('should throw an error for negative numbers with custom delimiters', () => {
             expect(() => calculator.add('//;\n1;-2;-3')).to.throw('Negative numbers not allowed: -2, -3');
             expect(() => calculator.add('//$\n-1$-2$-3')).to.throw('Negative numbers not allowed: -1, -2, -3');
         });
     });
+
+    describe("Some exceptional cases", ()=>{
+        it('should handle string having no numbers at all' ,()=>{
+            expect(calculator.add('//;\na\nb\nc,d')).to.equal(0);
+        });
+        
+        it('should throw an error for negative sign as a delimiter', () => {
+            expect(() => calculator.add('//-\n1-2')).to.throw("Invalid delimiter: '-' cannot include '-'");
+            expect(() => calculator.add('//-\n1,2,3,-4')).to.throw("Invalid delimiter: '-' cannot include '-'");
+        });
+    })
 });
