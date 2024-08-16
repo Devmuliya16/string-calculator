@@ -15,12 +15,11 @@ class StringCalculator {
         if (!numbers) return 0;
 
         let numString = numbers;
-
         // Check if the input string starts with a custom delimiter definition
         if (this.hasCustomDelimitor(numString)) {
             //extract and add delimiter to delimiters array
             numString = this.extractCustomDelimitor(numString);
-            if(numString==='') return 0;
+            if (numString === '') return 0;
         }
 
         // Split the string using the defined delimiters and convert to numbers
@@ -30,16 +29,16 @@ class StringCalculator {
         // Return the sum of the valid numbers
         return this.calculateSum(nums);
     }
-    
 
-    hasCustomDelimitor(numString){
+
+    hasCustomDelimitor(numString) {
         return numString.startsWith('//');
     }
 
-    extractCustomDelimitor(numString){
+    extractCustomDelimitor(numString) {
         const delimitersEndInd = numString.indexOf('\n');
 
-        if(delimitersEndInd===-1) return '';
+        if (delimitersEndInd === -1) return '';
 
         const customDelimiter = numString.substring(2, delimitersEndInd);
 
@@ -48,9 +47,7 @@ class StringCalculator {
         }
 
         this.delimiters.push(customDelimiter);
-
         return numString.substring(delimitersEndInd + 1);
-
     }
 
     splitAndConvertToNumbers(numString) {
@@ -64,8 +61,8 @@ class StringCalculator {
         }
     }
 
-    calculateSum(nums){
-        return nums.filter((num=>!isNaN(num))).reduce((sum,num)=>sum+num,0);
+    calculateSum(nums) {
+        return nums.filter((num => !isNaN(num))).reduce((sum, num) => sum + num, 0);
     }
 }
 

@@ -1,12 +1,12 @@
 import Home from "./pages/home"
-import { utilProvider } from "./context/utilContext"
+import {UtilProvider}  from "./context/utilContext.jsx"
 
 function App() {
   return (
     <>
-      <utilProvider>
+      <UtilProvider>
         <Home />
-      </utilProvider>
+      </UtilProvider>
     </>
   )
 }

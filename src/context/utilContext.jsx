@@ -7,25 +7,31 @@ import StringCalculator from "../utils/StringCalculator";
 const utilContext = createContext();
 
 // Create a provider component
-const utilProvider = ({ children }) => {
+const UtilProvider = ({ children }) => {
     const [inputValue, setInputValue] = useState("");
     const [outPutValue, setOutputValue] = useState("");
-    const [popUpMessage, setPopUpMessage] = useState({message:"", isError:""});
+    const [popUpMessage, setPopUpMessage] = useState({ message: "", isError: "" });
 
-    const computeValues = (inputValue) => {
+    const computeValues = () => {
         try {
             const calculator = new StringCalculator();
-            setOutputValue(calculator.add());
-
+            setOutputValue(calculator.add(inputValue));
+            console.log(outPutValue)
         } catch (e) {
-            setPopUpMessage({message:e.message, isError:true});
+            setPopUpMessage({ message: e.message, isError: true });
         }
     };
 
     return (
-        <utilProvider.Provider value={{ value, updateValue }}>
+        <utilContext.Provider value={{
+            inputValue,
+            setInputValue,
+            outPutValue,
+            popUpMessage,
+            computeValues
+        }}>
             {children}
-        </utilProvider.Provider>
+        </utilContext.Provider>
     );
 };
 
@@ -38,4 +44,4 @@ const useUtil = () => {
     return context;
 };
 
-export { utilProvider, useUtil };
+export { UtilProvider, useUtil };
