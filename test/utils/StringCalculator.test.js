@@ -85,5 +85,11 @@ describe("String Calculator test suit", ()=>{
             expect(() => calculator.add('//-\n1-2')).to.throw("Invalid delimiter: '-' cannot include '-'");
             expect(() => calculator.add('//-\n1,2,3,-4')).to.throw("Invalid delimiter: '-' cannot include '-'");
         });
+
+        it('should return 0 when no new line is there after delimiter', ()=>{
+            expect(calculator.add("//-")).to.equal(0);
+            expect(calculator.add("//$1")).to.equal(0);
+            expect(calculator.add("//,134")).to.equal(0);
+        })
     })
 });
