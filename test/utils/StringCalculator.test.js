@@ -4,7 +4,7 @@ import { describe, it ,beforeEach } from 'mocha';
 import StringCalculator from "../../src/utils/StringCalculator.js";
 
 
-describe("String Calculator - Addition tests", ()=>{
+describe("String Calculator - Simple Addition tests", ()=>{
     let calculator;
     beforeEach(()=>{
         calculator = new StringCalculator();
@@ -27,5 +27,16 @@ describe("String Calculator - Addition tests", ()=>{
     it('should return the sum of multiple numbers', () => {
         expect(calculator.add('1,2,3')).to.equal(6);
         expect(calculator.add('4,5,6,7')).to.equal(22);
+    });
+
+    it('should return the sum of multiple numbers with multiple consicutive delimiters', () => {
+        expect(calculator.add('1,2,,3,\n,')).to.equal(6);
+        expect(calculator.add('1,5,,,,3,,')).to.equal(9);
+        expect(calculator.add('4,\n5,\n6,7,')).to.equal(22);
+    });
+
+    it('should throw an error for negative numbers', () => {
+        expect(() => calculator.add('1,-2,3')).to.throw('Negative numbers not allowed: -2');
+        expect(() => calculator.add('//;\n1;-2;-3')).to.throw('Negative numbers not allowed: -2, -3');
     });
 })
