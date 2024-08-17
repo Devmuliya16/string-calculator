@@ -1,3 +1,4 @@
+import {motion} from 'framer-motion'
 function Button(props) {
 
   const style = {
@@ -8,10 +9,12 @@ function Button(props) {
   }
 
   return (
-    <button
+    <motion.button
+    whileHover={{ scale: 1.09 }}
+    whileTap={{ scale: 0.99 }}
     disabled={props.disabled} 
     className={`py-3 px-4  border-2 rounded-lg disabled:opacity-65 ${style[props.style]}`}
-    onClick={props.handler}>{props.text}</button>
+    onClick={props.handler}>{props.text}</motion.button>
   )
 }
 
