@@ -13,7 +13,7 @@ const home = () => {
       <section className="flex items-center flex-col justify-between h-screen p-4">
         <Navbar/>
         <TextArea/>
-        <div></div>
+        <div className='w-full content-center text-center text-2xl'><span className='drop-shadow-lg animate-pulse'>&darr;</span></div>
       </section>
       <section className="flex items-center flex-col justify-between h-screen">
         <MySection/>
