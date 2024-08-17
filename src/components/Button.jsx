@@ -8,8 +8,9 @@ function Button(props) {
   }
 
   return (
-    <button 
-    className={`py-3 px-4  border-2 rounded-lg ${style[props.style]}`}
+    <button
+    disabled={props.disabled} 
+    className={`py-3 px-4  border-2 rounded-lg disabled:opacity-65 ${style[props.style]}`}
     onClick={props.handler}>{props.text}</button>
   )
 }

@@ -10,16 +10,23 @@ const utilContext = createContext();
 const UtilProvider = ({ children }) => {
     const [inputValue, setInputValue] = useState("");
     const [outPutValue, setOutputValue] = useState("");
-    const [popUpMessage, setPopUpMessage] = useState({ message: "", isError: "" });
+    const [popUpMessage, setPopUpMessage] = useState({ message: "", isError: false });
+
+    const resetAllStates = ()=>{
+        setInputValue("");
+        setOutputValue("");
+        setPopUpMessage({message:"", isError:false});
+    }
+
 
     const computeValues = () => {
         try {
+            resetAllStates();
             const calculator = new StringCalculator();
-            // setOutputValue(calculator.add(inputValue));
-            setInputValue(calculator.add(inputValue));
+            const output = calculator.add(inputValue)
+            setOutputValue(output);
         } catch (e) {
             setPopUpMessage({ message: e.message, isError: true });
-            setInputValue(popUpMessage.message)
         }
     };
 
@@ -29,7 +36,8 @@ const UtilProvider = ({ children }) => {
             setInputValue,
             outPutValue,
             popUpMessage,
-            computeValues
+            computeValues,
+            resetAllStates
         }}>
             {children}
         </utilContext.Provider>

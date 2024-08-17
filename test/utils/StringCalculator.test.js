@@ -68,6 +68,7 @@ describe("String Calculator test suit", ()=>{
         it('should throw an error for multiple negative numbers', () => {
             expect(() => calculator.add('1,-2,3')).to.throw('Negative numbers not allowed: -2');
             expect(() => calculator.add('1,-2,-3')).to.throw('Negative numbers not allowed: -2, -3');
+            expect(() => calculator.add('-1,2,-3')).to.throw('Negative numbers not allowed: -1, -3');
         });
 
         it('should throw an error for negative numbers with custom delimiters', () => {

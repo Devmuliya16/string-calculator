@@ -1,4 +1,6 @@
 function MySection() {
+
+
   return (
     <>
     <section className="bg-brand-light w-full h-full grid md:grid-cols-2 md:grid-rows-1 grid-rows-2 ">
